@@ -1,101 +1,94 @@
-import Image from 'next/image'
+"use client";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import HeroImage from "../../public/images/Hero.jpg";
+import { BuildingOffice, SignIn, List, X } from "@phosphor-icons/react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{' '}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <main className="bg-neutral-primary">
+      <div className="flex flex-col h-screen max-w-[1920px] m-auto p-6 lg:p-16 gap-4">
+        {/* Header */}
+        <header className="flex items-center justify-between w-full m-auto">
+          <span className="text-brand-primary italic text-center text-3xl">
+            AgendeAe
+          </span>
+
+          <button
+            className="lg:hidden p-2 text-brand-primary"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
+            <div className="space-y-1">
+              {isMenuOpen ? <X size={32} /> : <List size={32} />}
+            </div>
+          </button>
+
+          <nav className="hidden lg:flex lg:items-center gap-12">
+            <Button variant="link" asChild>
+              <Link href="/establishment">
+                <BuildingOffice />
+                Para empresa
+              </Link>
+            </Button>
+
+            <Button variant="link" asChild>
+              <Link href="/login">
+                <SignIn />
+                Login
+              </Link>
+            </Button>
+
+            <Button size="lg" variant="default" asChild>
+              <Link href="/signup">Cadastrar</Link>
+            </Button>
+          </nav>
+        </header>
+
+        <div className="flex flex-col lg:flex-row w-full h-full items-center justify-between gap-8">
+          <div className="text-center lg:text-left">
+            <h1 className="text-brand-primary font-bold text-3xl lg:text-5xl">
+              Agende com facilidade, conecte-se com eficiência.
+            </h1>
+          </div>
+
+          <div className="rounded-md lg:max-w-[620px] w-full h-full overflow-hidden relative">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              className="object-cover h-full rounded-md"
+              src={HeroImage}
+              alt="Imagem de um calendário"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+
+            <Link
+              href="https://unsplash.com/photos/a-calendar-with-the-word-jan-on-it-tGGTatQB4N8"
+              target="_blank"
+              className="absolute text-xs right-2 bottom-2 text-brand-primary"
+            >
+              Imagem por: Unsplash
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  )
+      </div>
+
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center">
+          <nav className="w-full h-full flex flex-col justify-center items-center gap-12 text-white text-xl">
+            <Link href="/establishment" onClick={() => setIsMenuOpen(false)}>
+              2 Para empresa
+            </Link>
+            <Link href="/login" onClick={() => setIsMenuOpen(false)}>
+              Login
+            </Link>
+            <Link href="/signup" onClick={() => setIsMenuOpen(false)}>
+              Cadastrar
+            </Link>
+          </nav>
+        </div>
+      )}
+    </main>
+  );
 }
