@@ -1,0 +1,14 @@
+{
+  "files": {
+    "ignore": ["node_modules"]
+  },
+  "linter": {
+    "rules": {
+      "use-strict": "error",
+      "no-unused-vars": "warn"
+    }
+  },
+  "formatter": {
+    "useEditorConfig": true
+  }
+}
