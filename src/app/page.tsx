@@ -14,13 +14,15 @@ export default function Home() {
     <main className="bg-neutral-primary">
       <div className="flex flex-col h-screen max-w-[1920px] m-auto p-6 lg:p-16 gap-4">
         {/* Header */}
-        <header className="flex items-center justify-between w-full m-auto">
+        <header className={`flex items-center justify-between w-full m-auto`}>
           <span className="text-brand-primary italic text-center text-3xl">
             AgendeAe
           </span>
 
           <button
-            className="lg:hidden p-2 text-brand-primary"
+            className={`lg:hidden p-2 z-[51] fixed top-4 right-4  ${
+              isMenuOpen ? "text-white" : "text-brand-primary"
+            }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="space-y-1">
@@ -78,7 +80,7 @@ export default function Home() {
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center">
           <nav className="w-full h-full flex flex-col justify-center items-center gap-12 text-white text-xl">
             <Link href="/establishment" onClick={() => setIsMenuOpen(false)}>
-              2 Para empresa
+              Para empresa
             </Link>
             <Link href="/login" onClick={() => setIsMenuOpen(false)}>
               Login
