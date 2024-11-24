@@ -26,7 +26,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${libreBaskerville.className} antialiased`}>
-        {" "}
         {children}
       </body>
     </html>
