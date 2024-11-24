@@ -27,6 +27,7 @@ export default {
         outlineHover: "var(--color-outline-hover)",
         neutral: {
           primary: "var(--color-neutral)",
+          deep:"var(--color-neutral-deep)",
           secondary: "var(--color-neutral-secondary)",
         },
       },
